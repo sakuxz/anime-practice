@@ -1,0 +1,247 @@
+body {
+  background: #eee;
+}
+
+.header-block {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.65) 83%, rgba(0, 0, 0, 0.54) 100%), url("http://www2.ncue.edu.tw/ezcatfiles/a001/img/img/201/118786504.jpg");
+  background-position: center center;
+  background-size: cover;
+  height: 220px;
+  position: relative;
+
+  opacity: 0;
+  &.show {
+    opacity: 1;
+  }
+
+  .toolbar {
+    a {
+      font-size: 2.6em;
+      color: white;
+      padding: 20px;
+    }
+  }
+
+  .mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(54, 56, 60, 0.65);
+    z-index: 10;
+    transition: 0.3s all ease-in;
+    opacity: 0;
+    visibility: hidden;
+
+    &.open {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  .tools {
+    padding: 0;
+    list-style: none;
+    background: white;
+    border-radius: 2px;
+    box-shadow: 0 12px 36px -6px rgba(0, 0, 0, 0.12);
+    position: absolute;
+    bottom: 5px;
+    right: 13px;
+    z-index: 10;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: 0.3s slideintop;
+    animation-fill-mode: backwards;
+    animation-timing-function: ease-in;
+
+    &.open {
+      padding: 12px 12px;
+    }
+
+    li {
+      display: inline-block;
+
+      a {
+        display: inline-block;
+        padding: 6px 10px;
+        font-size: 1.5em;
+        color: rgba(0, 0, 0, 0.73);
+        text-decoration: none !important;
+
+        .fa-heart {
+          color: #4ce8a5;
+          animation: 0.2s like ease-in-out;
+          animation-fill-mode: backwards;
+        }
+
+        span {
+          font-size: 15px;
+          margin-left: 4px;
+        }
+      }
+    }
+  }
+
+  .comments {
+    margin-top: 1em;
+    .comment {
+      margin-bottom: 1.2em;
+      .name {
+        color: white;
+        text-align: center;
+        width: 46px;
+        height: 46px;
+        font-size: 1.7em;
+        line-height: 46px;
+        border-radius: 50%;
+        background: gray;
+        float: left;
+      }
+
+      .comment-content {
+        margin-left: 54px;
+        white-space: normal;
+        color: #434548;
+        padding: 8px 7px 12px;
+        border-radius: 2px;
+        border: 1px solid #f7f7f7;
+      }
+    }
+  }
+
+  .header-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 17px 22px;
+    animation: 0.3s slideintop;
+    animation-fill-mode: backwards;
+    animation-timing-function: ease-in;
+
+    h1,
+    p {
+      margin: 0 135px 0 0;
+    }
+
+    p {
+      color: #f5c111;
+      text-shadow: 0 0 2px rgba(0, 0, 0, 0.57);
+      margin-bottom: 3px;
+    }
+
+    h1 {
+      color: rgba(255, 255, 255, 0.86);
+      font-size: 1.8em;
+      text-shadow: 0 0 2px rgba(0, 0, 0, 0.73);
+    }
+  }
+}
+
+.content {
+  padding: 15px 10px;
+
+  p {
+    margin: 0;
+  }
+
+  h2 {
+    margin: 0 0 10px;
+    font-size: 1.6em;
+
+    &:after {
+      content: '';
+      display: block;
+      width: 2.3em;
+      height: 2px;
+      background: #df1515;
+      margin-top: 5px;
+    }
+  }
+
+  .card {
+    padding: 13px;
+    background: white;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.24);
+    margin-bottom: 1.3em;
+    animation: 0.5s slidein;
+    animation-fill-mode: backwards;
+    animation-timing-function: cubic-bezier(0.78, -0.04, 0.58, 1.49);
+  }
+
+  .time-line {
+    position: relative;
+    margin-top: 1.8em;
+
+    &:before {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 100%;
+      background: gray;
+      position: absolute;
+      top: 0;
+      left: 6px;
+    }
+
+    .time-block {
+      margin-left: 30px;
+      margin-bottom: 1.6em;
+      position: relative;
+
+      &:before {
+        content: '';
+        display: block;
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: #2196F3;
+        position: absolute;
+        top: 5px;
+        left: -28px;
+        border: 2px solid #eeeeee;
+      }
+
+      &:first-child {
+        margin-top: 6px;
+      }
+
+      .time {
+        color: #00b0ff;
+        font-size: 13px;
+        margin-bottom: 3px;
+      }
+    }
+  }
+}
+@keyframes slidein {
+  from {
+    opacity: 0;
+    transform: translateY(2em);
+  }
+
+  to {}
+}
+@keyframes slideintop {
+  from {
+    opacity: 0;
+    transform: translateY(-1em);
+  }
+
+  to {}
+}
+@keyframes like {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  85% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+
+  to {}
+}

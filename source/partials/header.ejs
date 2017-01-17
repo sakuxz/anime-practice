@@ -1,0 +1,32 @@
+<div class="header-block" id="app" v-bind:class="{ show: init }">
+  <div class="toolbar">
+    <a href="#" onclick="window.close();">
+      <i class="fa fa-angle-left" aria-hidden="true"></i>
+    </a>
+  </div>
+  <div class="mask" v-on:click="close" v-bind:class="{ open: openComment }"></div>
+  <ul class="tools" v-bind:class="{ open: openComment }">
+    <li><a v-on:click="like = !like">
+      <i class="fa fa-heart-o" v-if="!like" aria-hidden="true"></i>
+      <i class="fa fa-heart" v-else aria-hidden="true"></i>
+      <span>20</span>
+    </a></li>
+    <li><a v-on:click="open">
+      <i class="fa fa-comment-o" aria-hidden="true"></i>
+      <span>5</span>
+    </a></li>
+    <div class="comments" v-show="openComment">
+      <div class="comment" v-for="comment in comments">
+        <div class="name" v-text="comment.name"></div>
+        <p class="comment-content" v-text="comment.content">
+        </p>
+      </div>
+    </div>
+  </ul>
+  <div class="header-text">
+    <p>
+      school
+    </p>
+    <h1>彰化師範大學</h1>
+  </div>
+</div>

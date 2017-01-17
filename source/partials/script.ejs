@@ -1,0 +1,82 @@
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="./anime.min.js"></script>
+<script>
+  var app = new Vue({
+    el: '#app',
+    data: {
+      like: false,
+      openComment: false,
+      animationEnd: true,
+      comments: [
+        {
+          name: 'K',
+          content: '我愛彰師大',
+        },
+        {
+          name: 'H',
+          content: '我愛彰師大',
+        },
+        {
+          name: 'M',
+          content: '我愛彰師大',
+        },
+        {
+          name: 'F',
+          content: '我愛彰師大',
+        },
+      ],
+      init: false,
+    },
+    watch: {
+      openComment: function (val) {
+        if (val) {
+          $('html, body').animate({
+      			scrollTop: 0
+      		}, 200);
+          this.ani.play();
+          $('html, body').css('overflow', 'hidden');
+        } else {
+          this.ani.settings.direction = 'reverse';
+          this.ani.play();
+          $('html, body').css('overflow', 'auto');
+        }
+        this.animationEnd = false;
+      }
+    },
+    methods: {
+      open: function () {
+        if (!this.animationEnd) return;
+        this.openComment = true;
+      },
+      close: function () {
+        if (!this.animationEnd) return;
+        this.openComment = false;
+      },
+    },
+    mounted: function () {
+      this.init = true;
+      var toolsOffset = $('.tools').offset();
+      var windowHeight = $(window).height();
+      var windowWidth = $(window).width();
+      var openWidth = windowWidth - 24;
+      var openHeight = windowHeight - 60;
+      this.ani = anime({
+        targets: '.tools',
+        width: openWidth,
+        height: openHeight,
+        translateX: (toolsOffset.left - openWidth + $('.tools').width() - 12) * -1,
+        translateY: (toolsOffset.top - openHeight + $('.tools').height() - 25) * -1,
+        autoplay: false,
+        duration: '800',
+        complete: function () {
+          this.animationEnd = true;
+        }.bind(this)
+      });
+    }
+  })
+</script>
